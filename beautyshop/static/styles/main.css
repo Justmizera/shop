@@ -1,11 +1,14 @@
 /**
 * Nav
 */
-
+.test {
+    width: 600px;
+    height: 500px;
+}
 
 .navbar {
     text-transform: uppercase;
-    
+
 }
 
 .navbar .is-dark {
@@ -26,7 +29,8 @@
 * Bulma overrides
 */
 
-.input, .button {
+.input,
+.button {
     border-radius: 0;
 }
 
@@ -38,7 +42,7 @@
 
 }
 
-.product-list-item .box .price{
+.product-list-item .box .price {
     color: #888;
 }
 
@@ -46,11 +50,22 @@
 * Notification toast
 */
 
-@keyframes show-toast{
-    0% {bottom: -100%;}
-    20% {bottom: 50px;}
-    80% {bottom: 50px;}
-    100% {bottom: -100%;}
+@keyframes show-toast {
+    0% {
+        bottom: -100%;
+    }
+
+    20% {
+        bottom: 50px;
+    }
+
+    80% {
+        bottom: 50px;
+    }
+
+    100% {
+        bottom: -100%;
+    }
 }
 
 .notification.is-toast {

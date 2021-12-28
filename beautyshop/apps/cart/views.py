@@ -31,7 +31,7 @@ def cart_detail(request):
 
             send_mail(
             'Potwierdzenie złożenia zamówienia',
-            'Potwierdzam to, że zamówienie zostało złożone',
+            'Drogi kliencie, dziękujemy za złożone zamówienie w naszym sklepie. Poniżej przesyłamy dane do przelewu: Nr rachunku bankowego:  PL 64 9674 1016 8150 9741 9266 7666',
             'tt670165@gmail.com',
             [email],
             fail_silently= False

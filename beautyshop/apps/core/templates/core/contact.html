@@ -1,6 +1,27 @@
-{% extends 'core/base.html' %}   <!-- Extense - rozszerzam główny szablon o to co zawiera ten -->
-{% block title %} Contact | {% endblock %}
+{% extends 'core/base.html' %}
+<!-- Extense - rozszerzam główny szablon o to co zawiera ten -->
+{% block title %} Kontakt | {% endblock %}
 
 {% block content %}
-    <h1>Contact</h1>
+<h1 class="title is-italic has-text-centered">Dane kontaktowe</h1>
+<br>
+<br>
+<div class="box has-text-centered">
+
+    <ion-icon name="call-outline" size="large"></ion-icon>
+    <p> 785 332 458</p>
+    <br>
+
+    <ion-icon name="mail-outline" size="large"></ion-icon>
+    <p>beautyshop@beautyshop.com </p>
+    <br>
+
+    <ion-icon name="location-outline" size="large"></ion-icon>
+
+    <p>Beautyshop</p>
+    <p>Ul. Staropolska 15/9</p>
+    <p>60-285 Poznań</p>
+</div>
+<br>
+<br>
 {% endblock %}

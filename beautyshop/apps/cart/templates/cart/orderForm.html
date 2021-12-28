@@ -3,124 +3,125 @@
 {% block title %}Cart | {% endblock %}
 
 {% block content %}
- 
 
-    {% if cart %}
-       
-        <h2 class="subtitle">Informacje kontaktowe</h2>
 
-        <form method="post" action=".." id="payment-form">
-            {% csrf_token %}    
+{% if cart %}
 
-            {% if form.non_field_errors %}
-                <div class="notification is-danger">
-                    {{ form.non_field_errors}}
-                </div>
-            {% endif %}
+<h2 class="subtitle">Informacje kontaktowe</h2>
 
-            {% if form.errors %}
-                <div class="notification is-danger">
-                    <ul>
-                        {% for field in form %}
-                            {% for error in field.errors %}
-                                <li><strong>{{ field.label }}: </strong>{{ error }}</li>
-                            {% endfor %}
-                        {% endfor %}
-                    </ul>
-                </div>
-            {% endif %}
+<form method="post" action=".." id="payment-form">
+    {% csrf_token %}
 
-            <div class="columns">
-                <div class="column is-6">
-                    <div class="field">
-                        <label>First name</label>
-
-                        <div class="control">
-                            <input class="input is-danger is-rounded" type="text" name="first_name">
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label>Last name</label>
-
-                        <div class="control">
-                            <input class="input is-danger is-rounded" type="text" name="last_name">
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label>E-mail</label>
-
-                        <div class="control">
-                            <input class="input is-danger is-rounded" type="email" name="email">
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label>Phone</label>
-
-                        <div class="control">
-                            <input class="input is-danger is-rounded" type="text" name="phone">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column is-6">
-                    <div class="field">
-                        <label>Address</label>
-
-                        <div class="control">
-                            <input class="input is-danger is-rounded" type="text" name="address">
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label>Zip code</label>
-
-                        <div class="control">
-                            <input class="input is-danger is-rounded" type="text" name="zipcode">
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label>Place</label>
-
-                        <div class="control">
-                            <input class="input is-danger is-rounded" type="text" name="place">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h2 class="subtitle">Payment information</h2>
-
-            <div id="card-element">
-                <!-- A Stripe Element will be inserted here -->
-            </div>
-
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="notification is-danger">{{ message }}</div>
-                {% endfor %}
-            {% endif %}
-            
-            <div class="field">
-                <div class="control">
-                    <button class="button is-danger mt-4 is-uppercase">Kupuję i płacę</button>
-                    
-                </div>
-            </div>
-
-        </form>
-<br>
-<br>
-<br>
-          
-        <div class="control">
-        <a href="{% url 'cart' %}" class="button is-danger is-uppercase">Wróć</a>
-        </div>
-    {% else %}
-        <p>You don't have any products in your cart!</p>
+    {% if form.non_field_errors %}
+    <div class="notification is-danger">
+        {{ form.non_field_errors}}
+    </div>
     {% endif %}
-{% endblock %}
 
+    {% if form.errors %}
+    <div class="notification is-danger">
+        <ul>
+            {% for field in form %}
+            {% for error in field.errors %}
+            <li><strong>{{ field.label }}: </strong>{{ error }}</li>
+            {% endfor %}
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <div class="columns">
+        <div class="column is-6">
+            <div class="field">
+                <label>First name</label>
+
+                <div class="control">
+                    <input class="input is-danger is-rounded" type="text" name="first_name">
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Last name</label>
+
+                <div class="control">
+                    <input class="input is-danger is-rounded" type="text" name="last_name">
+                </div>
+            </div>
+
+            <div class="field">
+                <label>E-mail</label>
+
+                <div class="control">
+                    <input class="input is-danger is-rounded" type="email" name="email">
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Phone</label>
+
+                <div class="control">
+                    <input class="input is-danger is-rounded" type="text" name="phone">
+                </div>
+            </div>
+        </div>
+
+        <div class="column is-6">
+            <div class="field">
+                <label>Address</label>
+
+                <div class="control">
+                    <input class="input is-danger is-rounded" type="text" name="address">
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Zip code</label>
+
+                <div class="control">
+                    <input class="input is-danger is-rounded" type="text" name="zipcode">
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Place</label>
+
+                <div class="control">
+                    <input class="input is-danger is-rounded" type="text" name="place">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="subtitle">Payment information</h2>
+
+    <div id="card-element">
+        <!-- A Stripe Element will be inserted here -->
+    </div>
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="notification is-danger">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+
+    <div class="field">
+        <div class="control">
+            <button class="button is-danger mt-4 is-uppercase">Kupuję i płacę</button>
+
+        </div>
+    </div>
+
+</form>
+
+
+<br>
+<br>
+<br>
+
+<div class="control">
+    <a href="{% url 'cart' %}" class="button is-danger is-uppercase">Wróć</a>
+</div>
+{% else %}
+<p>You don't have any products in your cart!</p>
+{% endif %}
+{% endblock %}
