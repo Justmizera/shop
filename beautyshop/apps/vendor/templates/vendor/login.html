@@ -1,0 +1,25 @@
+{%extends 'core/base.html' %}  <!-- Extense - rozszerzam główny szablon o to co zawiera ten -->
+
+{% block title %}Logowanie | {% endblock %}
+
+{% block content %}
+<div class="box has-text-centered">
+
+    <h1 class="title is-italic">Zaloguj się</h1>
+</br>
+    <form method="post" action=".">
+    
+        {% csrf_token %}
+    
+        {{ form.as_p}}
+    </br>
+    </br>
+    
+        <div class="control">
+            <button class="button is-danger is-uppercase">Zaloguj</button>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}

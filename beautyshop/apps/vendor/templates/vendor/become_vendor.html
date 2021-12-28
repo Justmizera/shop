@@ -1,0 +1,30 @@
+{%extends 'core/base.html' %}  <!-- Extense - rozszerzam główny szablon o to co zawiera ten -->
+
+{% block title %}Become vendor | {% endblock %}
+
+{% block content %}
+<div class="box">
+    <h1 class="title has-text-centered is-italic">Wypełnij formularz i zostań sprzedawcą</h1>
+<br>
+<form method="post" action=".">
+
+    {% csrf_token %}
+
+    {{ form.as_table}}
+<br>
+<br>
+    <div class="control has-text-centered">
+        <button class="button is-danger is-uppercase ">Zaloguj się</button>
+    </div>
+</form>
+
+<hr>
+
+<h2 class="subtitle">Masz już konto? Zaloguj się!</h2>
+
+<a href="{% url 'login' %}">Zaloguj się</a>
+
+</div>
+
+
+{% endblock %}

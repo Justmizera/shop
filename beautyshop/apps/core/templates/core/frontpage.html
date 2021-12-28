@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}  <!-- Extense - rozszerzam główny szablon o to co zawiera ten -->
+{% block title %} Witaj | {% endblock %}
+
+{% block content %}
+    <div class="columns is-multiline mb-6">
+        <div class="column is-12 has-text-centered mt-6 mc-6">
+            <h2 class="title is-size-3 is-italic">Najnowsze produkty</h2>
+            <br>
+        </div>
+        
+
+        {% for product in newest_products %}
+            {% include 'product/parts/list_item.html' %} 
+        {% endfor %}
+    </div>
+    
+{% endblock %}

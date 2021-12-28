@@ -1,0 +1,101 @@
+<!-- Tu jest ogólny szkielet dokumentu HTML, który zostanie wypełniony treścią innych dokumnetów -->
+
+
+{% load static%} 
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>{% block title %}{% endblock %}Beautyshop</title>
+
+        <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+
+        <script src="{% static 'scripts/main.js' %}"> </script>
+    </head>
+
+    <body>
+        <nav class="navbar is-danger">
+            <div class="navbar-brand">
+                <a href="/" class="navbar-item"><strong>Beautyshop</strong></a>
+        
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="main-navbar">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+        
+            <div class="navbar-menu" id="main-navbar">
+                <div class="navbar-start">
+                    <div class="navbar-item">
+                        <form method="get" action="{% url 'search' %}">
+                            <div class="field has-addons">
+                                <div class="control">
+                                    <input type="text" class="input" placeholder="Search..." name="query">
+                                </div>
+                                <div class="control">
+                                    <button class="button is-danger is-light is-uppercase">Szukaj</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="navbar-end">
+                    {% for category in menu_categories %}
+                        <a href="{% url 'category' category.slug %}" class="navbar-item">{{ category.title }}</a>
+                    {% endfor %}
+
+                    <a href="{% url 'contact' %}" class="navbar-item">Kontakt</a>
+
+                    <div class="navbar-item">
+                        <a href="{% url 'cart' %}" class="button is-danger is-light">Koszyk{% if cart %} ({{ cart|length }}){% endif %}</a>
+                    </div>
+
+                    <div class="navbar-item">
+                        {% if request.user.is_authenticated %}
+                
+                        <a href="{% url 'logout' %}" class="button is-danger is-light">Wyloguj się</a>
+                        
+              
+                    {% else %}
+                    <a href="{% url 'login' %}" class="button is-danger is-light">Zaloguj się</a>
+                    {% endif%}
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+        <section class="section">
+            <div class="container">
+                <!-- Tu jest zawartość plikó html  -->
+                {% block content %}                 
+                {% endblock %}
+            </div>
+        </section>
+        <footer class="footer">
+            <h3 class="is-size-4 mb-4 is-italic">Beautyshop</h3>
+
+            {% if request.user.is_authenticated %}
+                
+                
+                <h1 class="subtitle is-6">Jesteś zalogowany jako: {{ vendor.name }}</h1>
+                <a href="{% url 'logout' %}" class="button is-danger is-uppercase">Wyloguj się</a>
+                <br>
+                <a href="{% url 'vendor_admin' %}">Panel sprzedawcy</a>
+                
+      
+            {% else %}
+                <a href="{% url 'become_vendor' %}">Zostań sprzedawcą</a>
+            {% endif%}
+        </footer>
+
+        {% block scripts %}
+        {% endblock %}
+
+    </body>
+</html>
